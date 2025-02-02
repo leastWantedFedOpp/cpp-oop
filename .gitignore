@@ -31,5 +31,14 @@
 *.out
 *.app
 
+# Igore Xcode files
 *.xcodeproj/
-.DS_Store
+*.xcuserdatad/
+*.xcschemes/
+*.xcworkspace/
+*.xcuserdatad/
+*.xcworkspacedata
+*.xcuserstate
+*.pbxproj
+*.plist
+*.DS_Store
