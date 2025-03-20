@@ -12,7 +12,6 @@ struct Address {
 
 //customer structure
 struct Customer {
-//    int id;
     string name;
     Address address;
 };
