@@ -1,4 +1,4 @@
-# Activity07 - Address Structure
+# Activity08 - Address Structure
 
 structure for address:
 - street
