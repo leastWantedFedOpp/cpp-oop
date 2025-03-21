@@ -16,8 +16,6 @@ struct Movie {
     vector<string> directors;
 };
 
-//this is a tst
-
 ostream& operator << (ostream& stream, const Movie& movie){
     stream << "- - -" << endl;
     stream << "Name: " << movie.name << endl;
@@ -30,7 +28,8 @@ ostream& operator << (ostream& stream, const Movie& movie){
     return stream ;
 }
 
-int main(int argc, const char * argv[]) {
+//movie function
+Movie createMovie(){
     string name;
     int day = 0, month = 0, year = 0;
     double rating = 0;
@@ -58,18 +57,24 @@ int main(int argc, const char * argv[]) {
         getline(cin, director);
         directorList.push_back(director);
     }
-       
+    
     Movie movie {
         name, {month, day, year}, rating, directorList
     };
     
-    cout << movie;
+    return movie;
+}
+
+int main(int argc, const char * argv[]) {
+    Movie mymovie = createMovie();
+    cout << mymovie;
     
     return 0;
 }
 
 /*
- define a function that creates and returns a Movie object, then display it using the overloaded stream insertion operator, while also ensuring
+ define a function that creates and returns a Movie object
+ then display it using the overloaded stream insertion operator, while also ensuring
  user input validation. The Movie object will use a nested struct for additional movie details.
  
  make sure that your structs should include at least 3 different data type
