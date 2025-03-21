@@ -36,17 +36,24 @@ Movie createMovie(){
     string director;
     int noOfDirector = 0;
     vector<string> directorList;
+    bool validDate = false;
     
     cout << "Enter name of the movie: ";
     getline(cin, name);
-    cout << "Release date (00/00/0000)" << endl;
-    cout << "Day: ";
-    cin >> day;
-    cout << "Month: ";
-    cin >> month;
-    cout << "Year: ";
-    cin >> year;
-    cout << "Current Rating (0/10): ";
+    do {
+        //ask user for input
+        cout << "Release date (00/00/0000)" << endl;
+        cout << "Day: "; //no number >= 0 or < 31?
+        cin >> day;
+        cout << "Month: "; //no number >= 0 or < 12
+        cin >> month;
+        cout << "Year: "; //no number > 0 and has to have length of 4
+        //if year is leap year and month is 02 || 2 then allow user to input 29 as day else return error
+        cin >> year;
+        //check if input is valid, if not run loop again
+    } while (!validDate);
+
+    cout << "Current Rating (0/10): "; //no number > 0 or < 10
     cin >> rating;
     cout << "Director(s)" << endl;
     cout << "Please enter the number of directors involved in this movie: ";
