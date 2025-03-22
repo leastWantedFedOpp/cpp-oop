@@ -16,6 +16,7 @@ struct Movie {
     vector<string> directors;
 };
 
+//overloaded stream insertion operator
 ostream& operator << (ostream& stream, const Movie& movie){
     stream << "- - -" << endl;
     stream << "Name: " << movie.name << endl;
@@ -28,6 +29,7 @@ ostream& operator << (ostream& stream, const Movie& movie){
     return stream ;
 }
 
+//for user input validation
 bool isLeapYear(int year){
     if ((year % 4 == 0 && year % 100 !=0) || year % 400 == 0){
         return true;
@@ -35,6 +37,7 @@ bool isLeapYear(int year){
     return false;
 }
 
+//check if date is valid or not
 bool checkInvalidDate(int day, int month, int year){
     bool dayInValid = false, monthInValid = false, yearInValid = false;
     
@@ -54,15 +57,9 @@ bool checkInvalidDate(int day, int month, int year){
     } else {
         return false;
     }
-
-    /*
-     if day has to be < 1 or > 31
-     if month is april(04), june(06) ,september(09) , and novmeber(11) then day has to be <= 30
-     if month == 2 and its a leap year then day has to be less than 29
-     */
 }
 
-//movie function
+//createMovie function
 Movie createMovie(){
     string name;
     int day, month, year;
@@ -70,30 +67,25 @@ Movie createMovie(){
     string director;
     int noOfDirector;
     vector<string> directorList;
-//    bool validDate = false;
     
     cout << "Enter name of the movie: ";
     getline(cin, name);
     
-    
     do {
-        //ask user for input
-        cout << "Release date (dd/mm/yyyy)" << endl;
-        cout << "Day: "; //no number >= 0 or < 31?
+        cout << "Release date (d/m/yyyy)" << endl;
+        cout << "Day: ";
         cin >> day;
-        cout << "Month: "; //no number >= 0 or < 12
+        cout << "Month: ";
         cin >> month;
-        cout << "Year: "; //no number > 0 and has to have length of 4
-        //if year is leap year and month is 02 || 2 then allow user to input 29 as day else return error
+        cout << "Year: ";
         cin >> year;
-        //check if input is valid, if not run loop again
         if(!checkInvalidDate(day, month, year)){
             cout << "Invalid date. Try again!" << endl;
         }
     } while(!checkInvalidDate(day, month, year));
     
     do {
-        cout << "Current Rating (0/10): "; //no number > 0 or < 10
+        cout << "Current Rating (0/10): ";
         cin >> rating;
         if(rating < 0 || rating > 10){
             cout << "Invalid rating. Try again!" << endl;
@@ -123,11 +115,3 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
-
-/*
- define a function that creates and returns a Movie object
- then display it using the overloaded stream insertion operator, while also ensuring
- user input validation. The Movie object will use a nested struct for additional movie details.
- 
- make sure that your structs should include at least 3 different data type
- */
